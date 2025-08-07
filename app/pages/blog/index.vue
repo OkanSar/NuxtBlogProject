@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useLocalePath, useSwitchLocalePath } from '#i18n'
+import {useColorMode} from "@vueuse/core";
 
+const baslik = ref("Blog Yazıları")
+const colorMode = useColorMode()
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()
@@ -42,15 +45,22 @@ const updateTag = (tag: string) => {
   selectedTag.value = tag
   router.replace({ query: { ...route.query, category: tag === 'All' ? undefined : tag } })
 }
+const isDark = computed(() => colorMode.value === 'dark')
+if (locale.value === "en"){
+  baslik.value = "Blog Posts"
+}
+
 </script>
 
 
 <template>
-  <div class="min-h-screen text-white">
+  <div class="min-h-screen">
     <UContainer class="py-8 px-4 blg-container font-serif">
-      <h1 class="text-3xl font-semibold mb-6 text-center">Blog Yazıları</h1>
+      <h1 class="text-3xl font-semibold mb-6 text-center text-black dark:text-white">
+        {{ baslik }}
+      </h1>
 
-      <ul class="flex flex-wrap gap-4 justify-center mb-8 text-sm text-gray-400">
+      <ul class="flex flex-wrap gap-4 justify-center mb-8 text-sm text-gray-400 ">
         <li
             v-for="category in categories"
             :key="category"
@@ -79,8 +89,8 @@ const updateTag = (tag: string) => {
 
           <div class="flex-1 p-3 flex flex-col justify-between">
             <div>
-              <h2 class="text-lg sm:text-lg font-semibold mb-1">{{ post.title }}</h2>
-              <p class="text-sm sm:text-sm text-gray-200 line-clamp-2">
+              <h2 class="text-lg sm:text-lg font-semibold mb-1 text-white">{{ post.title }}</h2>
+              <p class="text-sm sm:text-sm text-white dark:text-gray-200 line-clamp-2">
                 {{ post.description || 'Bu yazı için açıklama bulunmuyor.' }}
               </p>
             </div>
@@ -95,12 +105,14 @@ const updateTag = (tag: string) => {
                     })
                   }}
                 </li>
-                <li>30 Beğeni</li>
-                <li>217 Yorum</li>
+                <li>{{post.countLike}} Beğeni</li>
+                <li>{{post.countComment}} Yorum</li>
               </ul>
               <router-link :to="localePath(post.path)" class="inline-block mt-1">
-                <UButton size="sm" icon="i-heroicons-arrow-right-20-solid">
-                  Yazıyı Oku
+                <UButton size="sm" icon="i-heroicons-arrow-right-20 ">
+                  <div class="text-black dark:text-black">
+                    Yazıyı Oku
+                  </div>
                 </UButton>
               </router-link>
             </div>

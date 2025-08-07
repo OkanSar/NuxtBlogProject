@@ -8,6 +8,8 @@ tags:
 category: Teknoloji
 status: published
 changeSlug: blog-4
+countLike: 382
+countComment: 88
 ---
 
 ::card

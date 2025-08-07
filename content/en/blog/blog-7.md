@@ -9,6 +9,8 @@ tags:
 category: Teknoloji
 status: draft
 changeSlug: blog-7
+countLike: 882
+countComment: 72
 ---
 
 ::card

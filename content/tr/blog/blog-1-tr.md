@@ -10,6 +10,8 @@ tags:
 category: Programlama
 status: published
 changeSlug: blog-1
+countLike: 20
+countComment: 32
 ---
 ::card
 ::my-title
@@ -28,14 +30,9 @@ Giriş: Kod yazmayı nasıl unuttum?
 Hiç ekranınıza bakıp bir for döngüsünün nasıl çalıştığını unuttunuz mu?
 
 Aynen. Özellikle Lua'nın for döngüsü. Yeni bir makinedeydim, Copilot'a giriş yapmamıştım ve sözdizimi şeklinde bir farın önündeki geyik gibi öylece oturuyordum.
-::
-
-
-
 İşte tam da bu noktada, yazılım pratiğinin otomatikleşmiş parçalarına daha eleştirel bakmaya başladım. Kod yazarken düşündüğümüzü sanıyorduk, aslında sadece tahmin ediyorduk.
-
 Yapay zekanın önerdiği kodları, hiç sorgulamadan "tamam" deyip geçiyoruz. Hız kazandık ama anlam kaybettik. Kodun ruhunu kaybettik. Bu yazıda, kendi kod yazma alışkanlıklarımı yeniden inşa etmeye çalışacağım.
-
+::
 ::alert{type="warning"}
 Eğer siz de "otomatik yazılımcı" moduna geçtiyseniz, bu yazı bazı şeyleri sorgulatabilir.
 ::

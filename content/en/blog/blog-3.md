@@ -8,6 +8,8 @@ tags:
 category: Programlama
 status: published
 changeSlug: blog-3
+countLike: 182
+countComment: 99
 ---
 ::card
 ::my-title

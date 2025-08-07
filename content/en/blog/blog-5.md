@@ -9,6 +9,8 @@ tags:
 category: AI
 status: draft
 changeSlug: blog-5
+countLike: 91
+countComment: 41
 ---
 
 ::card

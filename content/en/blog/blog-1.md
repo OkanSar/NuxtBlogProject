@@ -10,6 +10,8 @@ tags:
 
 category: Programlama
 status: published
+countLike: 20
+countComment: 32
 ---
 ::card
 ::my-title

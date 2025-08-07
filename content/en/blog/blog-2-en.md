@@ -10,6 +10,8 @@ tags:
     - Yapay Zeka (AI)
 category: AI
 changeSlug: blog-2
+countLike: 59
+countComment: 129
 ---
 ::card
 ::my-title

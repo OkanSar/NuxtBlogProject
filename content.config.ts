@@ -17,6 +17,8 @@ export default defineContentConfig({
                 tags: z.array(z.string()),
                 status: z.string(),
                 changeSlug: z.string(),
+                countLike: z.number(),
+                countComment: z.number()
             })
         }),
         content_en: defineCollection({
@@ -34,6 +36,8 @@ export default defineContentConfig({
                 tags: z.array(z.string()),
                 status: z.string(),
                 changeSlug: z.string(),
+                countLike: z.number(),
+                countComment: z.number()
             })
         }),
         home_tr: defineCollection({

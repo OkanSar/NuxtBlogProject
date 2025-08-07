@@ -9,6 +9,8 @@ tags:
 category: Programlama
 status: draft
 changeSlug: blog-6
+countLike: 229
+countComment: 827
 ---
 
 ::card
