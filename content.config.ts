@@ -9,6 +9,7 @@ export default defineContentConfig({
                 prefix: 'blog',
             },
             schema: z.object({
+                blogId: z.number(),
                 title: z.string(),
                 description: z.string(),
                 image: z.string(),
@@ -28,6 +29,7 @@ export default defineContentConfig({
                 prefix: 'blog',
             },
             schema: z.object({
+                blogId: z.number(),
                 title: z.string(),
                 description: z.string(),
                 image: z.string(),
@@ -47,6 +49,7 @@ export default defineContentConfig({
                 prefix: '',
             },
             schema: z.object({
+                blogId: z.number(),
                 title: z.string(),
                 description: z.string(),
                 image: z.string(),
@@ -55,6 +58,8 @@ export default defineContentConfig({
                 tags: z.array(z.string()),
                 status: z.string(),
                 changeSlug: z.string(),
+                countLike: z.number(),
+                countComment: z.number()
             })
         }),
         home_en: defineCollection({
@@ -64,6 +69,7 @@ export default defineContentConfig({
                 prefix: '',
             },
             schema: z.object({
+                blogId: z.number(),
                 title: z.string(),
                 description: z.string(),
                 image: z.string(),
@@ -72,6 +78,8 @@ export default defineContentConfig({
                 tags: z.array(z.string()),
                 status: z.string(),
                 changeSlug: z.string(),
+                countLike: z.number(),
+                countComment: z.number()
             })
         })
     }

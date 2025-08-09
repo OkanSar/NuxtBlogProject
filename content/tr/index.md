@@ -1,9 +1,12 @@
 ---
+blogId: 22
 title: Ana Sayfa
 description: Merahaba
 date: 2025-08-01
 image: /images/coding-brain.jpg
 changeSlug: "blog-1"
+countLike: 44
+countComment: 52
 ---
 ::card
 

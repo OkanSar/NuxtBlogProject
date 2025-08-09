@@ -26,6 +26,21 @@
           <option value="tr">Türkçe</option>
           <option value="en">English</option>
         </select>
+        <template v-if="user">
+          <UDropdownMenu
+              :items="dropdownItems"
+          >
+            <UButton variant="ghost" color="primary">
+              {{ user.user_metadata?.name || user.email }}
+            </UButton>
+          </UDropdownMenu>
+        </template>
+
+        <template v-else>
+          <UButton :to="localePath('/login')" color="primary">
+            Giriş Yap
+          </UButton>
+        </template>
       </nav>
 
       <button
@@ -93,44 +108,75 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useLocalePath, useSwitchLocalePath } from '#i18n'
+import { useSupabaseClient, useSupabaseUser } from '#imports'
+import type { Comment } from '~~/types/database.types.js'
+import {defineNuxtRouteMiddleware, navigateTo} from "#app";
 
-defineProps({
-  isDark: {
-    type: Boolean,
-    required: true
+
+  const emit = defineEmits(['toggle-theme'])
+
+  const localePath = useLocalePath()
+  const router = useRouter()
+  const {locale} = useI18n()
+
+  const isOpen = ref(false)
+  const selectedLocale = ref(locale.value)
+
+  const supabase = useSupabaseClient()
+  const user = useSupabaseUser()
+  const role = ref('')
+
+  function changeLocale(code) {
+    const switchLocalePath = useSwitchLocalePath()
+    const path = switchLocalePath(code)
+    if (path) router.push(path)
   }
+
+  async function signOut() {
+    await supabase.auth.signOut()
+    router.push(localePath('/login'))
+  }
+
+const dropdownItems = computed(() => {
+  const items = [
+    { label: 'Çıkış Yap', icon: 'i-lucide-log-out', onSelect: signOut }
+  ]
+
+  if (role.value === 'admin') {
+    items.unshift({
+      label: 'Admin Panel',
+      icon: 'i-lucide-settings',
+      onSelect: () => router.push(localePath('/admin'))
+    })
+  }
+
+  return [items]
 })
 
-const emit = defineEmits(['toggle-theme'])
-
-const localePath = useLocalePath()
-
-const router = useRouter()
-const { t, locale, locales } = useI18n()
-
-const isOpen = ref(false)
-const selectedLocale = ref(locale.value)
-
-function changeLocale(code) {
-  const switchLocalePath = useSwitchLocalePath()
-  const path = switchLocalePath(code)
-  if (path) {
-    router.push(path)
-  }
-}
-
-watch(
-    () => locale.value,
-    (newLocale) => {
-      selectedLocale.value = newLocale
-    },
-    { immediate: true }
-)
+  watch(async () => {
+    if (user.value?.id) {
+      const { data, error } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', user.value.id)
+          .single()
+      if (!error && data) {
+        role.value = data.role
+      }
+    }
+  })
+  watch(
+      () => locale.value,
+      (newLocale) => {
+        selectedLocale.value = newLocale
+      },
+      {immediate: true}
+  )
 </script>
 
 

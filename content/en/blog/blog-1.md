@@ -1,4 +1,5 @@
 ---
+blogId: 1
 title: "AI Killed My All Coding Brain and I Create It Again"
 description: "İşte o zaman anladım: Copilot, Cursor ve CodeWhisperer gibi yapay zeka araçları parmaklarımızı yavaş yavaş uyuşturdu. Her zamankinden daha hızlı kod yazıyoruz ama aynı zamanda daha az düşünüyoruz. Ritüeller gibi tekrarlayan komutları kullanıyoruz. Otomatik tamamlamayı kutsal kitap gibi kabul ediyoruz. Kodun neden çalıştığını unutup, sadece işe yaradığına seviniyoruz."
 date: 2025-08-01

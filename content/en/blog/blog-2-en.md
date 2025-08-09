@@ -1,4 +1,5 @@
 ---
+blogId: 2
 title: "Binlerce PDF'i Anlayan ve İnsan Gibi Konuşan Özel Bir Yapay Zeka Belge Asistanı Nasıl Oluşturdum?"
 description: "Basit aramayı unutun. Teknik belgeleri okuyan, diyagramları çıkaran, metinleri yorumlayan ve soruları bir alan uzmanı gibi yanıtlayan,tüm bunları açık kaynaklı yapay zeka kullanarak yapan bir Arama-Artırılmış Üretim (RAG) sistemi tasarladım."
 date: 2025-08-02

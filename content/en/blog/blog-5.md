@@ -1,4 +1,5 @@
 ---
+blogId: 5
 title: "GPT-5 geliyor, lansmandan önce sızdırılan her şey burada"
 description: "GPT-5 artık soyut bir sonraki sürüm değil, ufukta beliriyor. Ve şimdiden yapay zekaçevrelerinde, geliştirici topluluklarında ve hatta OpenAI nin kendisinde yankı uyandırmaya başladı. İşaretler her yerde: beklenmedik model güncellemeleri, muğlak tweetler, şüpheli derecede dikkatli ifadelerle yazılmış röportajlar ve tabii ki, Tanrı'nın işini yapan eski güzel Reddit dedektifleri."
 date: 2025-08-02

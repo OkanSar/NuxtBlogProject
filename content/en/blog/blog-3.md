@@ -1,4 +1,5 @@
 ---
+blogId: 3
 title: "2026'ya Kadar Eskiyecek 6 Programlama Dili (Hala Kullanıyor Musunuz?)"
 description: "İşte o zaman daha akıllı bir şey inşa etmeye karar verdim: Binlerce PDF'i okuyan, anlayan ve soruları yanıtlayan çok modlu bir RAG AI."
 date: 2025-08-03

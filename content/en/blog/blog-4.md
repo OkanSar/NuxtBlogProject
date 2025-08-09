@@ -1,4 +1,5 @@
 ---
+blogId: 4
 title: "Java 21 Sanal İş Parçacıklarına Geçtim ve Kimsenin Beni Uyarmadığı Bir Kabusla Uyandım"
 description: "Tamam, size ortamı hazırlayayım. Şunu hayal edin: Sıradan bir Salı gecesi. Ana arka ucumda şık yeni sanal iş parçacıklarıyla Java 21'i yeni yayınladım. Oldukça heyecanlıyım - herkes ucuz iş parçacıkları, müthiş eşzamanlılık ve işlemcinizin gerçek gücünü ortaya çıkarmaktan övgüyle bahsediyor. İnternetteki tüm o önemli mühendisler, değil mi? Bu yüzden bir kereliğine kendimi 10 kat daha yetenekli hissetme havasındayım."
 date: 2025-08-01

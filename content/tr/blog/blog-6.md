@@ -1,4 +1,5 @@
 ---
+blogId: 6
 title: "Amazon'un bu yeni IDE'si kesinlikle oyunun kurallarını değiştiriyor"
 description: "Vay canına, Amazon'un yeni Kiro IDE'si gerçekten BÜYÜK.Ve eğer bunun sadece Cursor veya Copilot'a rakip bir ürün olduğunu düşünüyorsanız, çok yanılıyorsunuz...Bu, yapay zeka kodlama asistanlarının nasıl olması gerektiğine dair devrim niteliğinde bir yaklaşım...Bu gerçek yazılım geliştirme.Gerçek HEDEFLERE dayalı geliştirme — sadece rastgele bir aracı ara sıra yönlendirmek değil. Artık kör durumsuz değişiklikler yok — her şey gerçek özelliklere dayanıyor,"
 date: 2025-08-02

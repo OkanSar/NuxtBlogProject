@@ -2,7 +2,8 @@
 import { useI18n } from 'vue-i18n'
 import { useLocalePath, useSwitchLocalePath } from '#i18n'
 import {useColorMode} from "@vueuse/core";
-
+import type { Comment } from '~~/types/database.types.js'
+import {computed} from "vue";
 const baslik = ref("Blog Yazıları")
 const colorMode = useColorMode()
 const localePath = useLocalePath()
@@ -49,7 +50,6 @@ const isDark = computed(() => colorMode.value === 'dark')
 if (locale.value === "en"){
   baslik.value = "Blog Posts"
 }
-
 </script>
 
 
@@ -105,8 +105,6 @@ if (locale.value === "en"){
                     })
                   }}
                 </li>
-                <li>{{post.countLike}} Beğeni</li>
-                <li>{{post.countComment}} Yorum</li>
               </ul>
               <router-link :to="localePath(post.path)" class="inline-block mt-1">
                 <UButton size="sm" icon="i-heroicons-arrow-right-20 ">
