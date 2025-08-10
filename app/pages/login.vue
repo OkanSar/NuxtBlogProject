@@ -49,6 +49,35 @@
             {{ isLogin ? 'Kayıt Ol' : 'Giriş Yap' }}
           </UButton>
         </p>
+        <div class="mt-6 space-y-2">
+          <UButton
+              color="neutral"
+              variant="outline"
+              block
+              @click="signInWithGoogle"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+              <path fill="#4285F4" d="M24 9.5c3.54 0 6.27 1.52 7.72 2.8l5.7-5.7C33.02 4.84 28.88 3 24 3 14.84 3 7.28 8.98 4.62 16.9l6.62 5.15C12.33 16.6 17.62 9.5 24 9.5z"/>
+              <path fill="#34A853" d="M46.5 24c0-1.59-.15-2.8-.46-4.02H24v7.62h12.73c-.25 1.55-1.6 4.33-5.27 6.55l-.05.34 7.66 5.94.53.05c4.87-4.49 7.8-11.1 7.8-20.48z"/>
+              <path fill="#FBBC05" d="M10.24 29.9a14.96 14.96 0 0 1 0-11.81v-.35L3.62 13.4a24 24 0 0 0 0 21.2l6.62-5.14z"/>
+              <path fill="#EA4335" d="M24 46.5c6.5 0 11.94-2.14 15.9-5.82l-7.56-5.86c-2.1 1.38-4.83 2.3-8.33 2.3-6.42 0-11.9-4.33-13.85-10.15L4.62 34.6c3.06 6.1 9.79 10.8 19.38 10.8z"/>
+              <path fill="none" d="M0 0h48v48H0z"/>
+            </svg>
+            Google ile Giriş
+          </UButton>
+
+          <UButton
+              color="neutral"
+              variant="outline"
+              block
+              @click="signInWithGitHub"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.386-1.333-1.755-1.333-1.755-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.774.418-1.304.76-1.604-2.665-.305-5.467-1.334-5.467-5.933 0-1.31.467-2.38 1.235-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 3-.404c1.02.005 2.047.138 3 .404 2.29-1.552 3.297-1.23 3.297-1.23.654 1.653.243 2.873.12 3.176.77.84 1.234 1.91 1.234 3.22 0 4.61-2.807 5.625-5.48 5.922.43.372.823 1.102.823 2.222v3.293c0 .32.218.694.825.576C20.565 21.796 24 17.298 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub ile Giriş
+          </UButton>
+        </div>
 
         <p v-if="errorMsg" class="text-red-500 text-sm text-center mt-2">{{ errorMsg }}</p>
         <p v-if="successMsg" class="text-green-500 text-sm text-center mt-2">{{ successMsg }}</p>
@@ -102,4 +131,24 @@ async function onSubmit() {
     loading.value = false
   }
 }
+async function signInWithGoogle() {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: window.location.origin // Giriş sonrası yönlendirme
+    }
+  })
+  if (error) errorMsg.value = error.message
+}
+
+async function signInWithGitHub() {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+      redirectTo: window.location.origin
+    }
+  })
+  if (error) errorMsg.value = error.message
+}
+
 </script>

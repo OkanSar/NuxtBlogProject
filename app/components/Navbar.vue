@@ -7,7 +7,7 @@
 
       <nav class="hidden md:flex items-center gap-6">
         <NuxtLink :to="localePath('/blog')" class="text-sm font-medium text-green-700 hover:underline">
-          {{ $t('Blog') }}
+          {{ ('Blog') }}
         </NuxtLink>
 
         <UButton
@@ -86,7 +86,7 @@
     <div v-if="isOpen" class="md:hidden px-4 pb-4">
       <nav class="flex flex-col gap-2">
         <NuxtLink :to="localePath('/blog/')" class="text-sm font-medium text-green-700 hover:underline">
-          {{ $t('Blog') }}
+          {{ ('Blog') }}
         </NuxtLink>
         <UButton
             :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
