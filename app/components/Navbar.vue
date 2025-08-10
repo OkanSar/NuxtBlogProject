@@ -102,6 +102,22 @@
           <option value="tr">Türkçe</option>
           <option value="en">English</option>
         </select>
+        <template v-if="user">
+          <div class="flex justify-center items-center text-center">
+            <UDropdownMenu :items="dropdownItems">
+              <UButton variant="ghost" color="primary">
+                {{ user.user_metadata?.name || user.email }}
+              </UButton>
+            </UDropdownMenu>
+          </div>
+        </template>
+
+        <template v-else>
+            <UButton :to="localePath('/login')" color="primary" class="mt-2">
+              Giriş Yap
+            </UButton>
+        </template>
+
       </nav>
     </div>
   </header>
