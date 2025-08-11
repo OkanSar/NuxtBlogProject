@@ -31,6 +31,7 @@ const { data: allPosts } = await useAsyncData('blog-tags', async () => {
   watch:[selectedTag,locale]
 })
 
+
 const categorySet = new Set<string>()
 
 const categories = computed(() => {
@@ -107,7 +108,7 @@ if (locale.value === "en"){
                 </li>
               </ul>
               <router-link :to="localePath(post.path)" class="inline-block mt-1">
-                <UButton size="sm" icon="i-heroicons-arrow-right-20 ">
+                <UButton size="sm">
                   <div class="text-black dark:text-black">
                     Yazıyı Oku
                   </div>

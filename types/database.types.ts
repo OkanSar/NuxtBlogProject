@@ -9,8 +9,9 @@ export interface Comment {
         email: string
         role: string
     }
-    blog?:{
-        id: number
-        likes: number
-    }
+}
+
+export interface Blogs {
+    BlogId: number
+    likeCount: number
 }

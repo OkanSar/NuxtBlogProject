@@ -1,13 +1,21 @@
 <script setup lang="ts">
-import { useSupabaseClient, useSupabaseUser } from '#imports'
 import {computed} from "vue";
-import type { Comment } from '~~/types/database.types.js'
 
 const comments = inject('comments')
 const displayedCommentCount = inject('displayedCommentCount')
+const displayedlikeCount = inject('displayedlikeCount')
+const blogLikeCount = inject('blogLikeCount')
+const isLiked = inject<Ref<boolean>>('isLiked', ref(false))
+const addLike = inject<() => Promise<void>>('addLike', async () => {})
+const removeLike = inject<() => Promise<void>>('removeLike', async () => {})
+const checkUserLike = inject<() => Promise<void>>('checkUserLike', async () => {})
+
+if (!isLiked || !addLike || !removeLike || !checkUserLike) {
+  throw new Error('Beklenen provide değerleri bulunamadı.')
+}
 
 const { date, likeCount = 0, commentCount = 0 } = defineProps({
-  date: String | Date,
+  date: Date,
   likeCount: Number,
   commentCount: Number,
 })
@@ -19,13 +27,33 @@ const dateFormatted = computed(() => {
     day: 'numeric'
   })
 })
+onMounted(() => {
+  checkUserLike()
+})
 </script>
 
 <template>
-  <ul class="flex flex-wrap gap-4 text-xs text-gray-500 justify-center mt-10 mb-10">
-    <li>{{ dateFormatted }}</li>
-    <li><p> {{ likeCount }} <Icon name="i-lucide-heart"/></p></li>
-    <li>{{ displayedCommentCount }} <Icon name="i-lucide-mail"/></li>
+  <ul class="flex flex-wrap items-center justify-center gap-6 text-gray-600 dark:text-gray-300 text-sm mt-10 mb-10">
+    <li class="flex items-center gap-2">
+      <Icon name="i-lucide-calendar" class="text-gray-400" />
+      <span>{{ dateFormatted }}</span>
+    </li>
+    <li class="flex items-center gap-3">
+      <span class="text-base font-semibold select-none">{{ displayedlikeCount }}</span>
+      <UButton
+          @click="isLiked ? removeLike() : addLike()"
+          color="primary"
+          variant="outline"
+          class="flex items-center gap-2 px-4 py-2 rounded-lg transition hover:bg-primary-600 hover:text-white"
+      >
+        {{ isLiked ? 'Beğenmekten Vazgeç' : '❤️ Beğen' }}
+      </UButton>
+    </li>
+    <li class="flex items-center gap-2">
+      <Icon name="i-lucide-mail" class="text-gray-400" />
+      <span>{{ displayedCommentCount }}</span>
+    </li>
   </ul>
 </template>
+
 

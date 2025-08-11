@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import type { Collections } from '@nuxt/content'
-import { useSupabaseClient, useSupabaseUser } from '#imports'
-import type { Comment } from '~~/types/database.types'
-import { useLocalePath } from "#i18n"
+// import { useSupabaseClient, useSupabaseUser } from '#imports'
+import type { Comment, Blogs } from '~~/types/database.types'
 import { useI18n } from "vue-i18n"
 import {computed} from "vue";
-import {newLine} from "@vue/language-core/lib/codegen/utils";
 
 const supabase = useSupabaseClient<Comment>()
+const likesupabase = useSupabaseClient<Blogs>()
 const user = useSupabaseUser()
 
 const route = useRoute()
 const { locale } = useI18n()
 
+const isLiked = ref(false)
 const comments = ref<Comment[]>([])
 const newComment = ref('')
 const loading = ref(false)
 const successMsg = ref('')
 const errorMsg = ref('')
+const blogLikeCount = ref<number>(0)
 
 const slug = computed(() => String(route.params.slug))
 const fullPath = computed(() => `/blog/${slug.value}`)
@@ -34,6 +35,21 @@ const { data: page } = await useAsyncData('blog-' + fullPath.value, async () => 
 })
 
 const blogId = computed(() => page.value?.blogId)
+async function loadLikes() {
+  if (!blogId.value) return;
+
+  const { count, error } = await likesupabase
+      .from('Likes')
+      .select('*', { count: 'exact', head: true })
+      .eq('blogId', blogId.value)
+
+  if (error) {
+    console.error('Likes yüklenirken hata:', error.message);
+    blogLikeCount.value = 0;
+    return;
+  }
+  blogLikeCount.value = count ?? 0;
+}
 async function loadComments() {
   if (!blogId.value) return;
 
@@ -88,6 +104,74 @@ async function addComment() {
     await loadComments()
   }
 }
+async function checkUserLike() {
+  if (!blogId.value || !user.value) return;
+
+  const { data, error } = await likesupabase
+      .from('Likes')
+      .select('id')
+      .eq('blogId', blogId.value)
+      .eq('userId', user.value.id)
+      .maybeSingle()
+
+  isLiked.value = !!data && !error
+}
+async function addLike() {
+  if (!user.value) {
+    errorMsg.value = 'Beğenmek için giriş yapmalısınız.'
+    return;
+  }
+  if (!blogId.value) return;
+  if (isLiked.value) {
+    return;
+  }
+  const { error: insertError } = await likesupabase
+      .from('Likes')
+      .insert([{ blogId: blogId.value, userId: user.value.id }])
+
+  if (insertError) {
+    console.error('Like eklenirken hata:', insertError.message)
+    return;
+  }
+  isLiked.value = true;
+  const { count, error: countError } = await likesupabase
+      .from('Likes')
+      .select('*', { count: 'exact', head: true })
+      .eq('blogId', blogId.value)
+
+  if (countError) {
+    console.error('Like sayısı alınırken hata:', countError.message)
+    return;
+  }
+  blogLikeCount.value = count ?? 0;
+}
+async function removeLike() {
+  if (!user.value || !blogId.value) return;
+
+  const { error: deleteError } = await likesupabase
+      .from('Likes')
+      .delete()
+      .eq('blogId', blogId.value)
+      .eq('userId', user.value.id)
+
+  if (deleteError) {
+    console.error('Like kaldırılırken hata:', deleteError.message)
+    return;
+  }
+
+  isLiked.value = false;
+
+  const { count, error: countError } = await likesupabase
+      .from('Likes')
+      .select('*', { count: 'exact', head: true })
+      .eq('blogId', blogId.value)
+
+  if (countError) {
+    console.error('Like sayısı alınırken hata:', countError.message)
+    return;
+  }
+  blogLikeCount.value = count ?? 0;
+}
 loadComments()
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('tr-TR', {
@@ -105,8 +189,26 @@ const displayedCommentCount = computed(() => {
       ? liveCommentCount.value
       : commentCountFromMd.value
 })
+const likeCounFromMd = computed(() => 0)
+const liveLikeCount = computed(() => blogLikeCount.value ?? 0)
+const displayedlikeCount = computed(() => {
+  return liveLikeCount.value > likeCounFromMd.value
+      ? liveLikeCount.value
+      : liveLikeCount.value
+})
 provide('comments', comments)
 provide('displayedCommentCount', displayedCommentCount)
+provide('blogLikeCount', blogLikeCount)
+provide('displayedlikeCount', displayedlikeCount)
+provide('isLiked', isLiked)
+provide('addLike', addLike)
+provide('removeLike', removeLike)
+provide(' checkUserLike',  checkUserLike())
+onMounted(() => {
+  loadLikes()
+  checkUserLike()
+  loadComments()
+})
 </script>
 
 <template>
@@ -115,17 +217,14 @@ provide('displayedCommentCount', displayedCommentCount)
     sayfa bulunamadı
   </div>
   <section class="comments-section mt-8 max-w-3xl mx-auto px-4 mb-8">
-    <!-- Başlık -->
     <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-2">
       💬 Yorumlar <span class="text-gray-500 text-lg">({{ displayedCommentCount }})</span>
     </h2>
 
-    <!-- Yorum yok mesajı -->
     <div v-if="comments.length === 0" class="text-gray-600 dark:text-gray-300 mb-6 text-center">
-      Henüz yorum yok. İlk yorumu sen yaz! 😄
+      Henüz yorum yok. İlk yorumu sen yaz!
     </div>
 
-    <!-- Yorum listesi -->
     <ul class="space-y-4 mb-8">
       <li
           v-for="comment in comments"
@@ -144,7 +243,6 @@ provide('displayedCommentCount', displayedCommentCount)
       </li>
     </ul>
 
-    <!-- Yorum formu -->
     <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm p-6">
       <h3 class="text-lg font-semibold mb-3 text-gray-900 dark:text-white">Yorum Yap</h3>
       <textarea

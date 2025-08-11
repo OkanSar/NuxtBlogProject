@@ -15,12 +15,11 @@ async function fetchComments() {
       .select(`
       *,
       profile:UserId (email)
-    `)
+    `).order('Date',{ ascending: false } );
 
   if (error) {
     console.error('Yorumlar çekilirken hata:', error.message)
   } else {
-    // Pending olanlar önce gelsin diye sıralıyoruz
     comments.value = (data ?? []).sort((a, b) => {
       if (a.Status === b.Status) return 0
       if (a.Status === 'Pending') return -1

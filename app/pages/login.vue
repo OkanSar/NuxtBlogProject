@@ -135,7 +135,7 @@ async function signInWithGoogle() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: window.location.origin // Giriş sonrası yönlendirme
+      redirectTo: window.location.origin
     }
   })
   if (error) errorMsg.value = error.message
