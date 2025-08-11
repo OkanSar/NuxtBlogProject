@@ -21,12 +21,15 @@ The idea for this blog was born out of a need to share the small but inspiring d
 ::
 ::alert{type="warning"}
 My goal isn't just to inform; it's also to prompt questions, encourage reflection, and, at times, to seek shared understanding. In my writing, I prioritize addressing not only how things are done but also why. Because the value of knowledge lies not in simply consuming it, but in building something with it.::
+::
+
 ::alert{type=""}
 Each blog post is a reflection of the ideas I've developed over time, the things I've read and experimented with. Sometimes it's an in-depth analysis of a technical solution, sometimes it's simply an explanation of the mental processes behind a line of code. Because software isn't just a profession, it's a way of thinking—and putting that way of thinking into writing is one of the best ways to share it with others.::
+::
+
 ::alert{type="error"}
 If you found something here—a sentence that inspired you, a paragraph that gave you new insight, or just a few lines that made you say, “I thought so too”—then this blog has served its purpose.
 ::
-
 
 
 ::
