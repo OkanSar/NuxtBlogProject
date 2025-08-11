@@ -4,6 +4,19 @@ import { withLeadingSlash } from 'ufo'
 import {useLocalePath} from "#i18n";
 import {useI18n} from "vue-i18n";
 
+useSeoMeta({
+  title: 'Mosstar Blog - Anasayfa',
+  ogTitle: 'Mosstar Blog - Anasayfa',
+  description: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
+  ogDescription: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
+  ogImage: '/images/blog-image-6.jpg'
+})
+useHead({
+  link: [
+    { rel: 'icon', type: 'image/png', href: '/images/blog-image-6.jpg' }
+  ]
+})
+
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()

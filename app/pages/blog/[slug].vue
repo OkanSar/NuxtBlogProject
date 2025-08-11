@@ -209,6 +209,20 @@ onMounted(() => {
   checkUserLike()
   loadComments()
 })
+useSeoMeta({
+  title: ()=> `Mosstar Blog | ${page.value?.title}`,
+  ogTitle: ()=> `Mosstar Blog | ${page.value?.title}`,
+  description: ()=> `Mosstar Blog | ${ (page.value?.description || '')
+      .slice(0, 100) }`,
+  ogDescription: ()=> `Mosstar Blog | ${ (page.value?.description || '' )
+        .slice(0, 100) }`,
+  ogImage: ()=> `${page.value?.image}`,
+})
+  useHead({
+    link: [
+      { rel: 'icon', type: 'image/png', href: `${page.value?.image}?v=${Date.now()}` }
+    ]
+  })
 </script>
 
 <template>
