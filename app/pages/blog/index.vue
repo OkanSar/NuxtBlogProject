@@ -17,7 +17,7 @@ useSeoMeta({
   ogTitle: 'Mosstar Blog - Bloglar',
   description: 'Sizin için en uygun blogları listeledil ve kategorize ettik...',
   ogDescription: 'Sizin için en uygun blogları listeledil ve kategorize ettik...',
-  ogImage: 'https://images/blog-image-6.jpg'
+  ogImage: 'https://blog.okansarioglu.me/images/blog-image-6.jpg'
 })
 useHead({
   link: [

@@ -216,7 +216,7 @@ useSeoMeta({
       .slice(0, 100) }`,
   ogDescription: ()=> `Mosstar Blog | ${ (page.value?.description || '' )
         .slice(0, 100) }`,
-  ogImage: ()=> `https:/${page.value?.image}`,
+  ogImage: ()=> `https://blog.okansarioglu.me/${page.value?.image}`,
 })
   useHead({
     link: [

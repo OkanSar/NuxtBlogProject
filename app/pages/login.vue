@@ -95,7 +95,7 @@ useSeoMeta({
   ogTitle: 'Mosstar Blog - Giriş Yap / Kayıt Ol',
   description: 'Hemen şimdi giriş yaparak yorumlarda kendi fikrini belirtebilirsin...',
   ogDescription: 'Hemen şimdi giriş yaparak yorumlarda kendi fikrini belirtebilirsin...',
-  ogImage: '/images/blog-image-6.jpg'
+  ogImage: 'https://blog.okansarioglu.me/images/blog-image-6.jpg'
 })
 
 const supabase = useSupabaseClient()
