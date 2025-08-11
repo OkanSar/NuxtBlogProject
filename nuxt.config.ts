@@ -2,6 +2,7 @@ import vuetify from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-08-01',
+  ssr: true,
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
   devServer: {
