@@ -12,15 +12,15 @@ const {t,locale, locales, localeProperties } = useI18n()
 const selectedTag = ref(route.query.category || 'All')
 
 useSeoMeta({
-  title: () => 'Mosstar Blog - Bloglar',
-  ogTitle: () =>  'Mosstar Blog - Bloglar',
-  description: () => 'Sizin için en uygun blogları listeledil ve kategorize ettik...',
-  ogDescription: () =>  'Sizin için en uygun blogları listeledil ve kategorize ettik...',
-  ogImage: () =>  'https://blog.okansarioglu.me/images/blog-image-6.jpg'
+  title: 'Mosstar Blog - Bloglar',
+  ogTitle:  'Mosstar Blog - Bloglar',
+  description:'Sizin için en uygun blogları listeledil ve kategorize ettik...',
+  ogDescription: 'Sizin için en uygun blogları listeledil ve kategorize ettik...',
+  ogImage: 'https://blog.okansarioglu.me/images/blog-image-4.png'
 })
 useHead({
   link: [
-    { rel: 'icon', type: 'image/png', href: '/images/blog-image-6.jpg' }
+    { rel: 'icon', type: 'image/png', href: '/images/blog-image-4.png' }
   ]
 })
 
