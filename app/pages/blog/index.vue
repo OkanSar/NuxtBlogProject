@@ -5,7 +5,6 @@ import {useColorMode} from "@vueuse/core";
 import type { Comment } from '~~/types/database.types.js'
 import {computed} from "vue";
 const baslik = ref("Blog Yazıları")
-const colorMode = useColorMode()
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()
@@ -13,11 +12,11 @@ const {t,locale, locales, localeProperties } = useI18n()
 const selectedTag = ref(route.query.category || 'All')
 
 useSeoMeta({
-  title: 'Mosstar Blog - Bloglar',
-  ogTitle: 'Mosstar Blog - Bloglar',
-  description: 'Sizin için en uygun blogları listeledil ve kategorize ettik...',
-  ogDescription: 'Sizin için en uygun blogları listeledil ve kategorize ettik...',
-  ogImage: 'https://blog.okansarioglu.me/images/blog-image-6.jpg'
+  title: () => 'Mosstar Blog - Bloglar',
+  ogTitle: () =>  'Mosstar Blog - Bloglar',
+  description: () => 'Sizin için en uygun blogları listeledil ve kategorize ettik...',
+  ogDescription: () =>  'Sizin için en uygun blogları listeledil ve kategorize ettik...',
+  ogImage: () =>  'https://blog.okansarioglu.me/images/blog-image-6.jpg'
 })
 useHead({
   link: [
@@ -60,7 +59,6 @@ const updateTag = (tag: string) => {
   selectedTag.value = tag
   router.replace({ query: { ...route.query, category: tag === 'All' ? undefined : tag } })
 }
-const isDark = computed(() => colorMode.value === 'dark')
 if (locale.value === "en"){
   baslik.value = "Blog Posts"
 }

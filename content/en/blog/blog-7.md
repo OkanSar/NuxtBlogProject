@@ -1,7 +1,7 @@
 ---
 blogId: 7
-title: "Google, birçok programcının umutsuzca inkar etmeye çalıştığı yapay zeka gerçekliğini doğruladı"
-description: "Görüyor musunuz?Tüm bu insanlar hâlâ yapay zeka destekli kodlamanın, üretimde kimsenin kullanmadığı bir hile gibi davranıyor. Yorum bölümlerimdeki bazı kişiler, yapay zeka araçları kullanmanın sizi daha üretken yapmadığını bile söyledi... Hadi canım, hepimizin GitHub Copilot'un çok başarılı olduğu konusunda hemfikir olduğumuzu sanıyordum. Geçen yıl bu zamanlar sahip oldukları 1,3 milyondan fazla ücretli kullanıcı bunun kanıtı değil miydi? Bilmiyorsanız, yazılım geliştiricileri para kazanması kolay bir grup değil; aracınız gerçekten de bir şey olmalı ki 1,3 milyondan fazla kişi bunun için ödeme yapsın.Ve bunların çoğu işletmelerden gelse bile, bir şey bana her geliştirici aracının B2B'den bu rakamlara yaklaşamayacağını söylüyor."
+title: "Google confirms the reality of artificial intelligence that many programmers desperately try to deny"
+description: "See? All these people are still treating AI-assisted coding like it's some gimmick no one uses in production. Some people in my comments even said that using AI tools doesn't make you more productive... Come on, I thought we all agreed that GitHub Copilot was a hit. Wasn't that evidenced by their 1.3 million+ paid users this time last year? In case you didn't know, software developers aren't easy to monetize; your tool has to be something to get 1.3 million+ people to pay for it. And even if most of those come from businesses, something tells me not every developer tool from B2B can come close to those numbers."
 date: 2025-08-02
 image: /images/blog-image-8.jpg
 tags:

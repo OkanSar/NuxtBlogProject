@@ -1,7 +1,7 @@
 ---
 blogId: 3
-title: "2026'ya Kadar Eskiyecek 6 Programlama Dili (Hala Kullanıyor Musunuz?)"
-description: "İşte o zaman daha akıllı bir şey inşa etmeye karar verdim: Binlerce PDF'i okuyan, anlayan ve soruları yanıtlayan çok modlu bir RAG AI."
+title: "6 Programming Languages That Will Be Obsolete by 2026 (Are You Still Using Them?)"
+description: "That's when I decided to build something smarter: a multi-modal RAG AI that reads thousands of PDFs, understands them, and answers questions."
 date: 2025-08-03
 image: /images/blog-image-3.jpg
 tags:

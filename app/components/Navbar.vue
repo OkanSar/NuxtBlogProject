@@ -10,14 +10,6 @@
           {{ ('Blog') }}
         </NuxtLink>
 
-        <UButton
-            :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-            color="neutral"
-            variant="ghost"
-            @click="emit('toggle-theme')"
-        />
-
-
         <select
             v-model="selectedLocale"
             @change="changeLocale(selectedLocale)"
@@ -88,12 +80,6 @@
         <NuxtLink :to="localePath('/blog/')" class="text-sm font-medium text-green-700 hover:underline">
           {{ ('Blog') }}
         </NuxtLink>
-        <UButton
-            :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-            color="neutral"
-            variant="ghost"
-            @click="emit('toggle-theme')"
-        />
         <select
             v-model="selectedLocale"
             @change="changeLocale(selectedLocale)"
@@ -130,8 +116,6 @@ import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useLocalePath, useSwitchLocalePath } from '#i18n'
 import { useSupabaseClient, useSupabaseUser } from '#imports'
-import type { Comment } from '~~/types/database.types.js'
-import {defineNuxtRouteMiddleware, navigateTo} from "#app";
 
 
   const emit = defineEmits(['toggle-theme'])
@@ -147,7 +131,7 @@ import {defineNuxtRouteMiddleware, navigateTo} from "#app";
   const user = useSupabaseUser()
   const role = ref('')
 
-  function changeLocale(code) {
+  function changeLocale(code: string) {
     const switchLocalePath = useSwitchLocalePath()
     const path = switchLocalePath(code)
     if (path) router.push(path)
@@ -174,25 +158,26 @@ const dropdownItems = computed(() => {
   return [items]
 })
 
-  watch(async () => {
-    if (user.value?.id) {
-      const { data, error } = await supabase
-          .from('profiles')
-          .select('role')
-          .eq('id', user.value.id)
-          .single()
-      if (!error && data) {
-        role.value = data.role
-      }
+
+watch(() => user.value?.id, async (newId) => {
+  if (newId) {
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', newId)
+        .single()
+    if (!error && data) {
+      role.value = data.role
     }
-  })
-  watch(
-      () => locale.value,
-      (newLocale) => {
-        selectedLocale.value = newLocale
-      },
-      {immediate: true}
-  )
+  }
+})
+watch(
+    () => locale.value,
+    (newLocale) => {
+      selectedLocale.value = newLocale
+    },
+    {immediate: true}
+)
 </script>
 
 

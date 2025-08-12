@@ -1,7 +1,7 @@
 ---
 blogId: 2
-title: "Binlerce PDF'i Anlayan ve İnsan Gibi Konuşan Özel Bir Yapay Zeka Belge Asistanı Nasıl Oluşturdum?"
-description: "Basit aramayı unutun. Teknik belgeleri okuyan, diyagramları çıkaran, metinleri yorumlayan ve soruları bir alan uzmanı gibi yanıtlayan,tüm bunları açık kaynaklı yapay zeka kullanarak yapan bir Arama-Artırılmış Üretim (RAG) sistemi tasarladım."
+title: "How I Built a Custom AI Document Assistant That Understands Thousands of PDFs and Speaks Like a Human"
+description: "Forget simple search. I designed a Search-Augmented Generation (RAG) system that reads technical information, enhances diagrams, interprets text, and answers details like a domain expert, all using open source AI."
 date: 2025-08-02
 image: /images/blog-image-2.jpg
 status: draft

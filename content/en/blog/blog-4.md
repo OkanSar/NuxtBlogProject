@@ -1,7 +1,7 @@
 ---
 blogId: 4
-title: "Java 21 Sanal İş Parçacıklarına Geçtim ve Kimsenin Beni Uyarmadığı Bir Kabusla Uyandım"
-description: "Tamam, size ortamı hazırlayayım. Şunu hayal edin: Sıradan bir Salı gecesi. Ana arka ucumda şık yeni sanal iş parçacıklarıyla Java 21'i yeni yayınladım. Oldukça heyecanlıyım - herkes ucuz iş parçacıkları, müthiş eşzamanlılık ve işlemcinizin gerçek gücünü ortaya çıkarmaktan övgüyle bahsediyor. İnternetteki tüm o önemli mühendisler, değil mi? Bu yüzden bir kereliğine kendimi 10 kat daha yetenekli hissetme havasındayım."
+title: "I Switched to Virtual Threads in Java 21 and Woke Up to a Nightmare No One Warned Me About"
+description: "OK, let me set the scene. Picture this: It's a typical Tuesday night. I've just released Java 21, with fancy new virtual threads in my main backend. I'm pretty excited—everyone's raving about cheap threads, awesome concurrency, and unleashing the true power of your processor. All those important engineers on the internet, right? So for once, I'm in the mood to feel 10 times more capable."
 date: 2025-08-01
 image: /images/blog-image-4.jpg
 tags:

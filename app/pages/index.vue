@@ -3,20 +3,9 @@ import type { Collections } from '@nuxt/content'
 import { withLeadingSlash } from 'ufo'
 import {useLocalePath} from "#i18n";
 import {useI18n} from "vue-i18n";
-
-useSeoMeta({
-  title: 'Mosstar Blog - Anasayfa',
-  ogTitle: 'Mosstar Blog - Anasayfa',
-  description: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
-  ogDescription: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
-  ogImage: 'https://blog.okansarioglu.me/images/blog-image-6.jpg'
+definePageMeta({
+  ssr: true
 })
-useHead({
-  link: [
-    { rel: 'icon', type: 'image/png', href: '/images/blog-image-6.jpg' }
-  ]
-})
-
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()
@@ -27,6 +16,13 @@ const { data: page } = await useAsyncData(`${locale.value}/`, async () => {
   const collectionName = `home_${locale.value}` as keyof Collections
   const content = await queryCollection(collectionName).first()
   return content
+})
+useSeoMeta({
+  title: 'Mosstar Blog - Anasayfa',
+  ogTitle: 'Mosstar Blog - Anasayfa',
+  description: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
+  ogDescription: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
+  ogImage: 'https://blog.okansarioglu.me/images/blog-image-6.jpg'
 })
 </script>
 

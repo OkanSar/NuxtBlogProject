@@ -1,7 +1,7 @@
 ---
 blogId: 5
-title: "GPT-5 geliyor, lansmandan önce sızdırılan her şey burada"
-description: "GPT-5 artık soyut bir sonraki sürüm değil, ufukta beliriyor. Ve şimdiden yapay zekaçevrelerinde, geliştirici topluluklarında ve hatta OpenAI nin kendisinde yankı uyandırmaya başladı. İşaretler her yerde: beklenmedik model güncellemeleri, muğlak tweetler, şüpheli derecede dikkatli ifadelerle yazılmış röportajlar ve tabii ki, Tanrı'nın işini yapan eski güzel Reddit dedektifleri."
+title: "GPT-5 is coming, here's everything that leaked before the launch"
+description: "GPT-5 is no longer some abstract next version; it's looming on the horizon. And it's already making waves in AI circles, developer communities, and even OpenAI itself. The signs are everywhere: unexpected model updates, vague tweets, suspiciously carefully worded interviews, and, of course, good old Reddit detectives doing God's work."
 date: 2025-08-02
 image: /images/blog-image-5.jpg
 tags:

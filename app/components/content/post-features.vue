@@ -14,14 +14,14 @@ if (!isLiked || !addLike || !removeLike || !checkUserLike) {
   throw new Error('Beklenen provide değerleri bulunamadı.')
 }
 
-const { date, likeCount = 0, commentCount = 0 } = defineProps({
-  date: Date,
-  likeCount: Number,
-  commentCount: Number,
-})
+const props = defineProps<{
+  date: string
+  likeCount?: number
+  commentCount?: number
+}>()
 
 const dateFormatted = computed(() => {
-  return new Date(date).toLocaleDateString('tr-TR', {
+  return new Date(props.date).toLocaleDateString('tr-TR', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'

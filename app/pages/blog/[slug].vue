@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Collections } from '@nuxt/content'
-// import { useSupabaseClient, useSupabaseUser } from '#imports'
 import type { Comment, Blogs } from '~~/types/database.types'
 import { useI18n } from "vue-i18n"
 import {computed} from "vue";
@@ -11,7 +10,6 @@ const user = useSupabaseUser()
 
 const route = useRoute()
 const { locale } = useI18n()
-
 const isLiked = ref(false)
 const comments = ref<Comment[]>([])
 const newComment = ref('')
@@ -209,15 +207,17 @@ onMounted(() => {
   checkUserLike()
   loadComments()
 })
+
 useSeoMeta({
   title: ()=> `Mosstar Blog | ${page.value?.title}`,
   ogTitle: ()=> `Mosstar Blog | ${page.value?.title}`,
   description: ()=> `Mosstar Blog | ${ (page.value?.description || '')
       .slice(0, 100) }`,
   ogDescription: ()=> `Mosstar Blog | ${ (page.value?.description || '' )
-        .slice(0, 100) }`,
-  ogImage: ()=> `https://blog.okansarioglu.me/${page.value?.image}`,
+      .slice(0, 100) }`,
+  ogImage: () => `https://blog.okansarioglu.me${page.value?.image}`,
 })
+
   useHead({
     link: [
       { rel: 'icon', type: 'image/png', href: `${page.value?.image}?v=${Date.now()}` }
