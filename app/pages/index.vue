@@ -22,7 +22,7 @@ useSeoMeta({
   ogTitle: 'Mosstar Blog - Anasayfa',
   description: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
   ogDescription: 'Günümüz dünyasında bilgiye ulaşmak kolaylaştı ama gerçekten anlamlı, nitelikli ve güvenilir bilgiye ulaşmak bir o kadar zorlaştı..',
-  ogImage: 'https://blog.okansarioglu.me/images/blog-image-6.jpg'
+  ogImage: 'https://blog.okansarioglu.me/images/blog-image-4.png'
 })
 </script>
 
